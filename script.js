@@ -20,7 +20,7 @@ let title = "This was done with javascript";
 fetch('https://api.github.com/graphql', {
     method: 'post',
     headers: {
-        Authorization: 'bearer  7ed7a858f7d7e43990da1dc5bc52ef31a4e9611a '
+        Authorization: 'bearer cf4a9f9139146d5d7b24e5fbd3e143a6008d1f4b'
     },
     body: JSON.stringify({
         variables: {
@@ -51,7 +51,16 @@ fetch('https://api.github.com/graphql', {
                 }
             }`
     })
-}).then(res => res.json()).then(data => {
+}).then(res => {
+    if (res.ok) {
+        return res.json();
+    } else {
+        if (res.status == 401) {
+            throw new Error("Auth Token is invalid. Please generate a new one.");
+        } 
+        throw new Error("Something went wrong.");
+    }
+}).then(data => {
     
         let response = data.data.repositoryOwner.repositories.edges.reverse().map(repo => {
             // repo_title.innerText = repo.node.name
@@ -71,6 +80,8 @@ fetch('https://api.github.com/graphql', {
         })
         document.querySelector('#repoCount').innerHTML = data.data.repositoryOwner.repositories.totalCount
         document.querySelector('.flex-col').innerHTML = response.join('\n');
+    }).catch(err => {
+        alert(err)
     })
 
 function myFunction() {
