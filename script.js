@@ -20,7 +20,7 @@ let title = "This was done with javascript";
 fetch('https://api.github.com/graphql', {
     method: 'post',
     headers: {
-        Authorization: 'bearer 9e47f972b0d22ceeec2724365cd6a259067713d4'
+        Authorization: 'bearer  7ed7a858f7d7e43990da1dc5bc52ef31a4e9611a '
     },
     body: JSON.stringify({
         variables: {
