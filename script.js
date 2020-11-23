@@ -16,12 +16,11 @@ prevScrollpos = currentScrollPos;
 
 const repo_title = document.getElementById("repo-title");
 let title = "This was done with javascript";
-// const oauth = {Authorization: 'bearer ' + b912b08f4c81196d59a736c82f16b062baeb37bc}
-// repo_title.innerText = title
+
 fetch('https://api.github.com/graphql', {
     method: 'post',
     headers: {
-        Authorization: 'bearer cf4a9f9139146d5d7b24e5fbd3e143a6008d1f4b'
+        Authorization: 'bearer 9e47f972b0d22ceeec2724365cd6a259067713d4'
     },
     body: JSON.stringify({
         variables: {
